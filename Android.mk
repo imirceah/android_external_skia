@@ -56,8 +56,8 @@ ifeq ($(strip $(TARGET_CPU_VARIANT)),cortex-a9)
 	LOCAL_CFLAGS += -DANDROID_USE_EXTERNAL_MEMSETX
 endif
 
-# Enable Neon assembler optimized version of S32A_Opaque_BlitRow32.
-# Overrides the intrinsic blitter below.
+# Enable Neon assembler optimized version of S32A_Opaque_BlitRow32 and
+# S32A_Blend_Blitrow32. Overrides the intrinsic blitter below.
 LOCAL_CFLAGS += -DENABLE_OPTIMIZED_S32A_BLITTERS
 
 # special checks for alpha == 0 and alpha == 255 in S32A_Opaque_BlitRow32
@@ -274,6 +274,7 @@ ifeq ($(TARGET_ARCH),arm)
 ifeq ($(ARCH_ARM_HAVE_NEON),true)
 LOCAL_SRC_FILES += \
 	src/opts/S32A_Opaque_BlitRow32_neon.S \
+	src/opts/S32A_Blend_BlitRow32_neon.S \
 	src/opts/memset16_neon.S \
 	src/opts/memset32_neon.S
 
