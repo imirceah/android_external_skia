@@ -8,6 +8,8 @@
  * Special cases for when alpha is zero or opaque.
  */
 
+#if defined(__ARM_HAVE_NEON) && defined(ENABLE_OPTIMIZED_S32A_BLITTERS)
+
     .text
     .fpu    neon
     .align
@@ -237,3 +239,4 @@ S32A_Opaque_BlitRow32_neon:
 .LAlphaIndex:
     .byte 3, 3, 3, 3, 7, 7, 7, 7
 
+#endif
